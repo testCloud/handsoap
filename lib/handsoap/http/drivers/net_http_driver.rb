@@ -37,9 +37,9 @@ module Handsoap
           
           http_client.use_ssl = true if url.scheme == 'https'
 
-          http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE if http_client.use_ssl && !Handsoap.verify_ssl_cert?
+          http_client.verify_mode = OpenSSL::SSL::VERIFY_NONE if url.scheme == 'https' && !Handsoap.verify_ssl_cert?
 
-          http_client.ssl_version = Handsoap.ssl_version if http_client.use_ssl && Handsoap.ssl_version
+          http_client.ssl_version = Handsoap.ssl_version if url.scheme == 'https' && Handsoap.ssl_version
           
           if request.username && request.password
             # TODO: http://codesnippets.joyent.com/posts/show/1075
