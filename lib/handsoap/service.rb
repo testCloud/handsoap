@@ -35,6 +35,17 @@ module Handsoap
   def self.timeout
     @timeout || (self.timeout = 60)
   end
+
+  # Sets the ssl_version
+  def self.ssl_version=(ssl_version)
+    @ssl_version = ssl_version
+  end
+
+  # fetches the ssl_version
+  # the default ssl_version is nil (do not change the default)
+  def self.ssl_version
+    @ssl_version
+  end
   
   # Tell Handsoap to follow redirects
   def self.follow_redirects!
